@@ -1,20 +1,22 @@
 import { useRef } from "react";
 import { useEffect, useState } from "react";
-import FuncProps from "./FuncProps"
+import ForwardRef from "./ForwardRef";
 function App() {
-   const [user,setuser]=useState();
-   const showUser=(user)=>{
-     alert(user);
-   }
+const inputRef=useRef(null);
+function handleRef(){
+   inputRef.current.value=1000;
+   inputRef.current.focus();
+   inputRef.current.style.color="blue";
+}
   
    return(
       <div>
-         <input onChange={(event)=>setuser(event.target.value)} type="text" placeholder="enter user" />
-         <FuncProps showUser={showUser} user={user}/>
-         <FuncProps showUser={showUser} user={user}/>
-         <FuncProps showUser={showUser} user={user}/>
-         <FuncProps showUser={showUser} user={user}/>
-         <FuncProps showUser={showUser} user={user}/>
+         <ForwardRef ref={inputRef}/>
+         <hr />
+         <button onClick={handleRef}>
+            Forward Ref
+         </button>
+
 
       </div>
    )

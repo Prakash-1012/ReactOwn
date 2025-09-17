@@ -3,23 +3,36 @@ import { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 
 function App() {
-const [pending,startTransition]=useTransition();
-const handlebutton=()=>{
-startTransition(async()=>{
-   await new Promise(res=>setTimeout(res,3000))
+ const [data, setData] = useState({
+    name: 'Prakash',
+    address: {
+      city: 'Delhi',
+      country: 'India'
+    }
+  })
 
-})
+  const handleName = (val) => {
+    setData({ ...data,name:val })
 
-}
-   return(
-      <div>
-         {
-            pending?<img style={{width:"200px"}} src="https://res.cloudinary.com/bytesizedpieces/image/upload/v1656084931/article/a-how-to-guide-on-making-an-animated-loading-image-for-a-website/animated_loader_gif_n6b5x0.gif" />:null 
-         }
-         <button disabled={pending} onClick={handlebutton}>click me!</button>
+  }
+  const handleCity = (city) => {
+    setData({ ...data, address: { ...data.address, city } })
 
-      </div>
-   )
+
+  }
+  return (
+    <div>
+      <h1>Updating Objects in State</h1>
+
+      <input type="text" placeholder="update name"
+        onChange={(event) => handleName(event.target.value)} />
+      <input type="text" placeholder="update city"
+        onChange={(event) => handleCity(event.target.value)} />
+      <h2>Name :{data.name}</h2>
+      <h2>City :{data.address.city}</h2>
+      <h2>Country :{data.address.country}</h2>
+    </div>
+  )
 
 }
 export default App;

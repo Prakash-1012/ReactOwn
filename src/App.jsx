@@ -23,8 +23,10 @@ function App() {
             <Route path="/in/user/contact" element={<Contact />} />
             <Route path="/in/user/Login" element={<Login />} />
           </Route>
-            <Route path="/Users" element={<Users/>}/>
-            <Route path="/users/:id/:name" element={<UserDetails/>}/>
+            <Route path="/Users/list?" element={<Users/>}/>
+
+
+            <Route path="/users/:id/:name?" element={<UserDetails/>}/>
 
         </Route>
 

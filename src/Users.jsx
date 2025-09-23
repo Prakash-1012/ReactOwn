@@ -14,6 +14,14 @@ export default function Users(){
         {
         Users.map((item)=>(
             <div>
+           <Link className="link" to={"/users/"+item.id}><h4>{item.name}</h4></Link>
+            </div>
+        ))
+    }
+        <hr />
+   {
+        Users.map((item)=>(
+            <div>
            <Link className="link" to={"/users/"+item.id+"/"+item.name}><h4>{item.name}</h4></Link>
             </div>
         ))

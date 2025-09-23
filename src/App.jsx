@@ -1,27 +1,23 @@
-import { useId, useRef, useTransition } from "react";
-import { useEffect, useState } from "react";
-import { useFormStatus } from "react-dom";
-import College from "./College";
-import { subjectContext } from "./CreateContext";
-
-
+import { BrowserRouter,Routes,Route,Link } from "react-router";
 function App() {
-const [subject,setSubject]=useState("");
+
 
   return (
-     <subjectContext.Provider value={subject}>
-      <select value={subject} onChange={(evt)=>setSubject(evt.target.value)}>
-        <option value="">Select Subject</option>
-        <option value="Maths">Maths</option>
-        <option value="History">History</option>
-        <option value="CS">CS</option>
-      </select>
-      <button onClick={()=>setSubject("")}>Clear</button>
-      <div style={{backgroundColor:"red",padding:"10px"}}>
-    <h1>Context API</h1>
-    <College/>
-      </div>
-     </subjectContext.Provider>
+    <>
+  <BrowserRouter>
+  <Link to="/">Home</Link>
+  <Link to="/contact">Contact</Link>
+  <Link to="/about">About</Link>
+
+
+  <Routes>
+    <Route path="/" element={<h1>Home</h1>}/>
+    <Route path="/contact" element={<h1>Contact</h1>}/>
+    <Route path="/about" element={<h1>About</h1>}/>
+
+  </Routes>
+  </BrowserRouter>
+    </>
   )
 
 }

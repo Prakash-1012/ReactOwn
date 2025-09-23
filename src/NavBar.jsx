@@ -10,9 +10,10 @@ function NavBar() {
             <div>
                 <ul>
                     <li><Link className="link" to="/">Home</Link></li>
-                    <li><Link className="link" to="/contact">Contact</Link></li>
-                    <li><Link className="link" to="/Login">Login</Link></li>
+                    <li><Link className="link" to="/in/user/contact">Contact</Link></li>
+                    <li><Link className="link" to="/in/user/Login">Login</Link></li>
                     <li><Link className="link" to="/College">College</Link></li>
+                    <li><Link className="link" to="/Users">Users</Link></li>
 
                 </ul>
             </div>

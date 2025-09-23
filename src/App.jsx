@@ -6,18 +6,24 @@ import College from "./College";
 import Student from "./Student";
 import Department from "./Department";
 import Details from "./Details";
+import Home from "./Home";
 function App() {
 
 
   return (
     <>
-    <NavBar/>
+    {/* <NavBar/> */}
+
   <Routes>
-    <Route path="/" element={<h1>Home</h1>}/>
+    <Route element={<NavBar/>}>
+    <Route path="/" element={<Home/>}/>
     <Route path="/contact" element={<Contact/>}/>
     <Route path="/Login" element={<Login/>}/>
+    </Route>
+
+
     <Route path="/College" element={<College/>}>
-    <Route path="Student" element={<Student/>}/> 
+    <Route index element={<Student/>}/> 
     <Route path="Department" element={<Department/>}/> 
     <Route path="Details" element={<Details/>}/> 
 

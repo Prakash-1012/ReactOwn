@@ -1,0 +1,24 @@
+{
+ "users":[
+  {
+    "name":"prakash",
+    "course":"Btech",
+    "age":21
+  },
+   {
+    "name":"priya",
+    "course":"Bsc",
+    "age":21
+  },
+   {
+    "name":"parag",
+    "course":"Btech",
+    "age":20
+  },
+   {
+    "name":"arijit",
+    "course":"Btech",
+    "age":19
+  }
+ ]
+}

@@ -16,12 +16,23 @@ export default function UserList(){
         setLoading(false);
         setUserdata(response);
       }
+      const deleteUser=async(id)=>{
+        let response=await fetch(url+"/"+id,{
+          method:"delete"
+        });
+        response=await response.json();
+        if(response){
+          alert("User Deleted");
+          fetchData();
+        }
+      }
       return (
         <>
           <ul style={{display:"flex",justifyContent:"space-around",width:"800px",listStyleType:"none"}}>
               <li>Name</li>
               <li>Course</li>
               <li>Age</li>
+              <li>Action</li>
             </ul>
     
         { !loading?
@@ -30,6 +41,7 @@ export default function UserList(){
               <li>{user.name}</li>
               <li>{user.course}</li>
               <li>{user.age}</li>
+              <li><button onClick={()=>deleteUser(user.id)}>Delete</button></li>
             </ul>
           )):<h1>Data Loading...</h1>
         }

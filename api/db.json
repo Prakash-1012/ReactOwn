@@ -17,24 +17,6 @@
       "course": "Btech",
       "age": 20,
       "id": "1dfc"
-    },
-    {
-      "name": "arijit",
-      "course": "Btech",
-      "age": 19,
-      "id": "a095"
-    },
-    {
-      "id": "cdbe",
-      "name": "Prakalp",
-      "age": "19",
-      "course": "Btech"
-    },
-    {
-      "id": "1b4d",
-      "name": "Prince Raj",
-      "age": "18",
-      "course": "Btech"
     }
   ]
 }

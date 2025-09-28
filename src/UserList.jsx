@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, NavLink } from "react-router";
 
 export default function UserList(){
      const[userData,setUserdata]=useState([]);
@@ -28,7 +28,7 @@ export default function UserList(){
       }
       return (
         <>
-          <ul style={{display:"flex",justifyContent:"space-around",width:"800px",listStyleType:"none"}}>
+          <ul style={{display:"flex",justifyContent:"space-around",width:"900px",listStyleType:"none"}}>
               <li>Name</li>
               <li>Course</li>
               <li>Age</li>
@@ -37,11 +37,12 @@ export default function UserList(){
     
         { !loading?
           userData.map((user,index)=>(
-            <ul key={index} style={{display:"flex",justifyContent:"space-around",width:"800px",listStyleType:"none"}}>
+            <ul key={index} style={{display:"flex",justifyContent:"space-around",width:"900px",listStyleType:"none"}}>
               <li>{user.name}</li>
               <li>{user.course}</li>
               <li>{user.age}</li>
               <li><button onClick={()=>deleteUser(user.id)}>Delete</button></li>
+              <li><button><NavLink style={{textDecoration:"none",color:"black"}} to={"/EditUser/"+user.id}>Edit</NavLink></button></li>
             </ul>
           )):<h1>Data Loading...</h1>
         }

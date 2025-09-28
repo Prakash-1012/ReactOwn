@@ -1,22 +1,16 @@
 {
   "users": [
     {
-      "name": "prakash",
+      "name": "prakash bhondu",
+      "age": "21",
       "course": "Btech",
-      "age": 21,
       "id": "71e6"
     },
     {
-      "name": "priya",
-      "course": "Bsc",
+      "name": "priya bhondu",
       "age": 21,
+      "course": "Bsc",
       "id": "73c6"
-    },
-    {
-      "name": "parag",
-      "course": "Btech",
-      "age": 20,
-      "id": "1dfc"
     }
   ]
 }

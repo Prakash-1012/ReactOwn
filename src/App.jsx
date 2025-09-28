@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route, Navigate, NavLink } from "react-router";
 import UserList from "./UserList";
 import UserAdd from "./UserAdd";
+import EditUser from "./EditUser";
 
 function App() {
   return (
@@ -13,7 +14,6 @@ function App() {
   </li>
   <li>
     <NavLink to="/addUser">Add new user</NavLink>
-
   </li>
 </ul>
 <Routes>
@@ -21,6 +21,9 @@ function App() {
 
   <Route path="/" element={<UserList/>}/>
   <Route path="/addUser" element={<UserAdd/>}/>
+  <Route path="/EditUser/:id" element={<EditUser/>}/>
+
+
 
   
 </Routes>

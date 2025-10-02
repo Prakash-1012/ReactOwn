@@ -1,32 +1,43 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Navigate, NavLink } from "react-router";
-import UserList from "./UserList";
-import UserAdd from "./UserAdd";
-import EditUser from "./EditUser";
-
+import "./index.css";
 function App() {
+const[nameErr,setNameErr]=useState();
+
+const[passErr,setPassErr]=useState();
+
+
+const handleName=(evt)=>{
+  if(evt.target.value.length>5){
+    setNameErr("Length of name exceeded(only 5 characters)");
+  }else{
+    setNameErr();
+  }
+
+}
+const handlePass=(evt)=>{
+  let regex=/^[A-Z0-9]+$/i;
+  if(regex.test(evt.target.value)){
+    setPassErr();
+  }
+  else{
+    setPassErr("No special characters allowed")
+  }
+
+}
+
+
   return (
     <>
-<h1>Make user list and add new user and display on UI</h1>
-<ul>
-  <li>
-    <NavLink to="/">UserList</NavLink>
-  </li>
-  <li>
-    <NavLink to="/addUser">Add new user</NavLink>
-  </li>
-</ul>
-<Routes>
+  <input className={nameErr?"error":""} type="text" onChange={handleName} placeholder="enter your name"  />
+  <span style={{color:"red"}}>{nameErr && nameErr}</span>
+  <br />
+  <br />
+  <input className={passErr?"error":""} type="text" onChange={handlePass} placeholder="enter your password"  />
+  <span style={{color:"red"}}>{passErr && passErr}</span>
 
-
-  <Route path="/" element={<UserList/>}/>
-  <Route path="/addUser" element={<UserAdd/>}/>
-  <Route path="/EditUser/:id" element={<EditUser/>}/>
-
-
-
-  
-</Routes>
+  <br />
+  <br />
+  <button disabled={nameErr||passErr}>Login</button>
 
     </>
   )

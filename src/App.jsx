@@ -1,45 +1,44 @@
-import { lazy, Suspense, useActionState, useEffect, useState } from "react";
+import { lazy, Suspense, useActionState, useEffect, useReducer, useState } from "react";
 import "./index.css";
 function App() {
-  const handleValidation = (prevData, formData) => {
-    let regex = /[A-Z0-9]+$/i;
-    let name = formData.get("name");
-    let password = formData.get("password");
-    if (name.length > 5) {
-      return { error: "Name should only contain 5 characters",name,password };
-    }
-    else if (!regex.test(password)) {
-      return { error: "No special characters allowed",name,password };
-    }
-    else {
-      return { message: "Login done",name,password };
-    }
-
+  const emptyData={
+    name:"",
+    age:"",
+    email:"",
+    city:"",
+    address:""
   }
-
-  const [data, action, pending] = useActionState(handleValidation, undefined);
-
-
-
+  const reducer=(data,action)=>{
+    return{...data,[action.type]:action.val}
+  }
+  const [state,dispatch]=useReducer(reducer,emptyData);
   return (
     <>
-     {
-          data?.error && <span style={{ color: "red" }}>{data?.error}</span>
-        }
-        {
-          data?.message && <span style={{ color: "green" }}>{data?.message}</span>
-         }
-      <form action={action}>
-        <input defaultValue={data?.name} type="text" placeholder="enter name" name="name" />
-        <br />
-        <br />
-        <input defaultValue={data?.password} type="text" placeholder="enter password" name="password" />
-        <br />
-        <br />
-      
-        <button disabled={pending}>Login</button>
 
-      </form>
+    <input type="text" placeholder="enter name" onChange={(evt)=>dispatch({type:"name",val:evt.target.value})} />
+    <br />
+    <br />
+    <input type="text" placeholder="enter age" onChange={(evt)=>dispatch({type:"age",val:evt.target.value})}/>
+      <br />
+    <br />
+    <input type="text" placeholder="enter email" onChange={(evt)=>dispatch({type:"email",val:evt.target.value})}/>
+      <br />
+    <br />
+    <input type="text" placeholder="enter city" onChange={(evt)=>dispatch({type:"city",val:evt.target.value})} />
+    <br />
+    <br />
+    <input type="text" placeholder="enter address" onChange={(evt)=>dispatch({type:"address",val:evt.target.value})}/>
+
+    <h1>Name:{state.name}</h1>
+    <h1>Age:{state.age}</h1>
+    <h1>Email:{state.email}</h1>
+    <h1>City:{state.city}</h1>
+    <h1>Address:{state.address}</h1>
+
+
+
+
+
 
     </>
   )
